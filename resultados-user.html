@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html ng-app="plunker" >
+<head>
+	<meta charset="utf-8">
+	<title>What You Wanna Eat</title>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css">
+	<!-- <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<!-- <link href="http://ivaynberg.github.com/select2/select2-3.2/select2.css" rel="stylesheet"/> -->
+	<link href="css/select2.css" rel="stylesheet"/>
+	<link href="css/default.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	<script src="https://raw.github.com/twitter/bootstrap/master/docs/assets/js/bootstrap.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+	<script src="js/angular-ui.js"></script>
+	<script src="js/blocksit/blocksit.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(window).load( function() {
+				$('#container').BlocksIt({
+					numOfCol: 5,
+					offsetX: 8,
+					offsetY: 8
+				});
+			});
+			
+			//window resize
+			var currentWidth = 1100;
+			$(window).resize(function() {
+				var winWidth = $(window).width();
+				var conWidth;
+				if(winWidth < 660) {
+					conWidth = 440;
+					col = 2
+				} else if(winWidth < 880) {
+					conWidth = 660;
+					col = 3
+				} else if(winWidth < 1100) {
+					conWidth = 880;
+					col = 4;
+				} else {
+					conWidth = 1100;
+					col = 5;
+				}
+				
+				if(conWidth != currentWidth) {
+					currentWidth = conWidth;
+					$('#container').width(conWidth);
+					$('#container').BlocksIt({
+						numOfCol: col,
+						offsetX: 8,
+						offsetY: 8
+					});
+				}
+			});
+		});
+	</script>
+	<script src="http://ivaynberg.github.com/select2/select2-3.2/select2.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<div class="navbar navbar-static-top">
+		<div class="navbar-inner" style="padding-bottom: 0;">
+			<a href="#" class="brand"><img src="img/logo2.png" style="position: relative; top: -3px; margin: 0; padding: 0;" width="32px" alt=""></a>
+			<form class="navbar-search pull-left">
+				<input type="text" class="search-query" placeholder="O que você tem em casa?">
+			</form>
+			<ul class="nav pull-right">
+				<li><img src="img/paulo.jpg" alt="" style="margin: 0; padding: 0; position: relative; top: 5px;" class="img-circle" width="32px" height="32px"></li>
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções <b class="caret"></b></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<section id="wrapper">
+		<h2 class="title">Olá Paulo! Nós temos 10 receitas que contenham os ingredientes que você tem em casa</h2>
+		<div id="container">
+			<div class="grid">
+				<h3>Macarrão à Carbonara</h3>
+				<img src="img/carbo.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><span class="pull-right" style="padding-top: 2px;">223 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">bacon</span>
+				<span class="label labelAlertWywe">creme de leite</span>
+				<span class="label labelAlertWywe">macarrao</span>
+				<span class="label labelAlertWywe">ovo</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Empada de Frango com Bacon</h3>
+				<img src="img/empada.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">13 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">frango</span>
+				<span class="label labelAlertWywe">bacon</span>
+				<span class="label labelAlertWywe">farinha de trigo</span>
+				<span class="label labelAlertWywe">ovo</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Pudim de limão</h3>
+				<img src="img/pudim.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">2 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">ovo</span>
+				<span class="label labelAlertWywe">leite condensado</span>
+				<span class="label labelAlertWywe">limão</span>
+				<span class="label labelAlertWywe">leite</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Salada com linguiça</h3>
+				<img src="img/salada.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">12 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">alface</span>
+				<span class="label labelAlertWywe">tomate</span>
+				<span class="label labelAlertWywe">rúcula</span>
+				<span class="label labelAlertWywe">palmito</span>
+				<span class="label labelAlertWywe">champignon</span>
+				<span class="label labelAlertWywe">batata palha</span>
+				<span class="label labelAlertWywe">cenoura</span>
+				<span class="label labelAlertWywe">milho verde</span>
+				<span class="label labelAlertWywe">cebola</span>
+				<span class="label labelAlertWywe">pimentão</span>
+				<span class="label labelAlertWywe">queijo gorgonzola</span>
+				<span class="label labelAlertWywe">molho barbecue</span>
+				<span class="label labelAlertWywe">linguiça de frango</span>
+				<span class="label labelAlertWywe">batata</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Brownie</h3>
+				<img src="img/brownie.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">28 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">chocolate</span>
+				<span class="label labelAlertWywe">leite</span>
+				<span class="label labelAlertWywe">farinha de trigo</span>
+				<span class="label labelAlertWywe">cevejar</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Brigadeirão</h3>
+				<img src="img/brigadeiro.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><span class="pull-right" style="padding-top: 2px;">39 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">leite condensado</span>
+				<span class="label labelAlertWywe">manteiga</span>
+				<span class="label labelAlertWywe">leite</span>
+				<span class="label labelAlertWywe">ovo</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Bolo de Cenoura</h3>
+				<img src="img/bolo.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">212 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">farinha de trigo</span>
+				<span class="label labelAlertWywe">cenoura</span>
+				<span class="label labelAlertWywe">leite</span>
+				<span class="label labelAlertWywe">ovo</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Cuca de banana com farofa</h3>
+				<img src="img/cuca.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">13 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">açucar</span>
+				<span class="label labelAlertWywe">fermento</span>
+				<span class="label labelAlertWywe">leite</span>
+				<span class="label labelAlertWywe">ovo</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Costela de boi na panela</h3>
+				<img src="img/costela.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">3 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">cebola</span>
+				<span class="label labelAlertWywe">costela de boi</span>
+				<span class="label labelAlertWywe">caldo de carne</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+			<div class="grid">
+				<h3>Estrogonofe de carne</h3>
+				<img src="img/estrogonofe.jpg" alt="">
+				<span style="display: block; font-size: 11px; color: #573a39; margin-top: 5px;"><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star2.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><img style="border: none;" src="img/star.svg" alt=""><span class="pull-right" style="padding-top: 2px;">23 comentários</span></span>
+				<br>
+				<span class="label labelAlertWywe">carne</span>
+				<span class="label labelAlertWywe">creme de leite</span>
+				<span class="label labelAlertWywe">tomate</span>
+				<span class="label labelAlertWywe">champignon</span>
+				<br>
+				<br>
+				<button class="btn btnWywe">Ver Receita</button>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
